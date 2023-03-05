@@ -83,9 +83,12 @@ if button or st.session_state.get("submit"):
             st.write("")
             st.write("")
             st.markdown("#### Sources")
-            for source in sources:
-                st.markdown(source.page_content)
-                st.markdown(source.metadata["source"])
-                st.markdown("---")
+            if "I do not know" in answer["output_text"].split("SOURCES:")[0]:
+                st.write("No relevant sources found!")
+            else:
+                for source in sources:
+                    st.markdown(source.page_content)
+                    st.markdown(source.metadata["source"])
+                    st.markdown("---")
         except OpenAIError as e:
             st.error(e._message)
