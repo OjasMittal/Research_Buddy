@@ -4,7 +4,6 @@ from openai.error import OpenAIError
 from tools import (
     embed_docs,
     get_answer,
-    get_sources,
     parse_docx,
     parse_pdf,
     parse_txt,
@@ -15,7 +14,6 @@ from side import sidebar
 
 def clear_submit():
     st.session_state["submit"] = False
-st.session_state["OPENAI_API_KEY"] = st.secrets["pass"]
 st.set_page_config(page_title="Research Buddy", page_icon="📖")
 sidebar()
 def load_lottie_url(url: str):
@@ -76,7 +74,8 @@ if button or st.session_state.get("submit"):
             if(len(sources)!=None):
                 st.markdown(answer["output_text"].split("SOURCES:")[0])
             else:
-                st.markdown("Sorry no relevant answer could be found.")
+                st.markdown("Sorry no"
+                            " relevant answer could be found.")
             st.write("")
             st.write("")
             st.write("")
