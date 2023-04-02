@@ -15,9 +15,9 @@ def sidebar():
         st.write("")
 
         st.subheader("ABOUT:")
-        st.markdown("Empowering research scholars with AI technology, "
-                    "Research Buddy  allows you to upload research papers and receive quick and "
-                    "accurate answers to your questions, all powered by OpenAI's advanced technology ")
+        st.markdown("ResearchBuddy empowers research scholars with AI technology, "
+                    " allowing you to upload research papers and receive quick and "
+                    "accurate answers to your questions, all powered by LangChain Model & OpenAI's advanced technology ")
         st.write("")
         st.write("")
         api_key_input = st.text_input(
