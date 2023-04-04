@@ -1,5 +1,4 @@
 from trycourier import Courier
-import os
 def send_email(email,ans,auth):
                 client = Courier(auth_token=auth)
                 client.send_message(
