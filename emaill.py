@@ -1,7 +1,7 @@
 from trycourier import Courier
 import os
-client = Courier(auth_token=os.getenv("AUTH_TOKEN"))
-def send_email(email,ans):
+def send_email(email,ans,auth):
+                client = Courier(auth_token=auth)
                 client.send_message(
                         message={
                           "to": {

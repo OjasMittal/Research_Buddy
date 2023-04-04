@@ -93,16 +93,11 @@ if button or st.session_state.get("submit"):
                     st.markdown("---")
         except OpenAIError as e:
             st.error(e._message)
-    # if "Email Result" not in st.session_state:
-    #     st.session_state["Email Result"] = False
-    # if "Send" not in st.session_state:
-    #     st.session_state["Send"] = False
-    # if st.button("Email Result"):
-    #     st.session_state["Email Result"] = not st.session_state["Email Result"]
-    # if st.session_state["Email Result"]:
+
     st.info("To email the Answer, enter your email id and click on Send button.")
     email = st.text_input("Enter your email id")
     if st.button("Send"):
-        success = emaill.send_email(email, ans)
+        auth=st.secrets["AUTH_TOKEN"]
+        success = emaill.send_email(email, ans,auth)
         if success:
             st.success("Mail Sent Successfully!")
