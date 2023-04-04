@@ -1,5 +1,6 @@
 import requests
 import streamlit as st
+import emaill
 from openai.error import OpenAIError
 from tools import (
     embed_docs,
@@ -72,10 +73,11 @@ if button or st.session_state.get("submit"):
             answer = get_answer(sources, ques)
             st.markdown("#### Answer")
             if(len(sources)!=None):
-                st.markdown(answer["output_text"].split("SOURCES:")[0])
+                ans=answer["output_text"].split("SOURCES:")[0]
+                st.markdown(ans)
             else:
-                st.markdown("Sorry no"
-                            " relevant answer could be found.")
+                ans="Sorry no relevant answer could be found."
+                st.markdown(ans)
             st.write("")
             st.write("")
             st.write("")
@@ -91,3 +93,16 @@ if button or st.session_state.get("submit"):
                     st.markdown("---")
         except OpenAIError as e:
             st.error(e._message)
+    # if "Email Result" not in st.session_state:
+    #     st.session_state["Email Result"] = False
+    # if "Send" not in st.session_state:
+    #     st.session_state["Send"] = False
+    # if st.button("Email Result"):
+    #     st.session_state["Email Result"] = not st.session_state["Email Result"]
+    # if st.session_state["Email Result"]:
+    st.info("To email the Answer, enter your email id and click on Send button.")
+    email = st.text_input("Enter your email id")
+    if st.button("Send"):
+        success = emaill.send_email(email, ans)
+        if success:
+            st.success("Mail Sent Successfully!")
