@@ -1,3 +1,4 @@
+#module to dvelop the input prompt to be sent to the OpenAI model
 from langchain.prompts import PromptTemplate
 template = """Create a final answer to the given questions using the provided document excerpts(in no particular order) 
 as references. ALWAYS include a "SOURCES" section in your answer including only the minimal set of sources needed to
