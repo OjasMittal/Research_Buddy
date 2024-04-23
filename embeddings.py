@@ -1,3 +1,5 @@
+#module to extract raw data from pdf, convert it to meta data and send the embeddings to OpenAI module
+
 """Wrapper around OpenAI embedding models."""
 from typing import Any, Dict, List, Optional
 
